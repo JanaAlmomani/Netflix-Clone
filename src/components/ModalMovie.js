@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Image from 'react-bootstrap/Image';
 import Form from 'react-bootstrap/Form';
-
 
 function ModalMovie(props) {
     const [comment, setComment] = useState('');
@@ -32,10 +31,11 @@ function ModalMovie(props) {
     const style2 = { backgroundColor: 'black' }
     const style3 = { display: 'flex' }
     const style1 = { gap: '10px' }
-    
+
+    console.log(props.show);
     return (
 
-        <Modal style={{ ...style2 }} Show={props.modalShow} onHide={props.hadellClose}>
+        <Modal style={{ ...style2 }} show={props.show} onHide={props.close}>
             <Modal.Header style={{ backgroundColor: 'gray' }} closeButton>
                 <Modal.Title style={{ color: 'yellow' }}>{props.movieData.title}</Modal.Title>
             </Modal.Header>
@@ -55,12 +55,12 @@ function ModalMovie(props) {
 
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={props.hadellClose}>
+                <Button variant="secondary" onClick={props.close}>
                     Close
                 </Button>
                 <Button variant="primary" onClick={() => {
-                    alert('Added, Thank You For The Feedback')
-                    postRes();
+                    alert('Added, Thank You For The Comment')
+                    postRes()
 
                 }}>
                     add to favorite
@@ -70,5 +70,6 @@ function ModalMovie(props) {
 
 
     )
+            
 }
 export default ModalMovie;

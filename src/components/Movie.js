@@ -10,9 +10,10 @@ function Movie(props) {//item it self
     const [modalShow, setModalShow] = useState(false);
     const [click, setClick] = useState({});
 
-    const hadellShow = () => {
-        setClick(props.item);
+    const hadellShow = (item) => {
+        setClick(item);
         setModalShow(true);
+        console.log(modalShow);
     }
     const hadellClose = () => {
         setModalShow(false);
@@ -30,11 +31,11 @@ function Movie(props) {//item it self
                         <Card.Text>
                             {props.item.overview}
                         </Card.Text>
-                        <Button variant="primary" onClick={hadellShow}>add to favorite</Button>
+                        <Button variant="primary" onClick={() => {hadellShow(props.item)}}>add to favorite</Button>
                     </Card.Body>
                 </Card>
             </Col>
-            <ModalMovie show={modalShow} close={hadellClose} movieData={click}/>
+            <ModalMovie show={modalShow} close={hadellClose} movieData={props.item}/>
         </>
 
     )
