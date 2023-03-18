@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import Image from 'react-bootstrap/Image';
 import Form from 'react-bootstrap/Form';
 
+
 function ModalMovie(props) {
     const [comment, setComment] = useState('');
     const hadellComment = (event) => {
@@ -34,7 +35,7 @@ function ModalMovie(props) {
 
     console.log(props.show);
     return (
-
+       
         <Modal style={{ ...style2 }} show={props.show} onHide={props.close}>
             <Modal.Header style={{ backgroundColor: 'gray' }} closeButton>
                 <Modal.Title style={{ color: 'yellow' }}>{props.movieData.title}</Modal.Title>
@@ -59,7 +60,7 @@ function ModalMovie(props) {
                     Close
                 </Button>
                 <Button variant="primary" onClick={() => {
-                    alert('Added, Thank You For The Comment')
+                    // alert('Added, Thank You For The Comment')
                     postRes()
 
                 }}>
@@ -67,9 +68,6 @@ function ModalMovie(props) {
                 </Button>
             </Modal.Footer>
         </Modal>
-
-
     )
-            
 }
 export default ModalMovie;
