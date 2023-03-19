@@ -38,7 +38,7 @@ function FavList() {
 
 
     const deletMovie = async (item) => {
-        const serverURL = `${process.env.REACT_APP_serverURL}/${item.id}`;
+        const serverURL = `${process.env.REACT_APP_serverURL}/deleteMovie/${item.id}`;
         console.log(item.id);
         const axiosRes = await axios.delete(serverURL);
         const data = (axiosRes.data);
