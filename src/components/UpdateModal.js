@@ -16,7 +16,7 @@ const updateMovies = async(e)=>{
         commentText: e.target.commenttext.value
     }
     
-    const serverURL=`https://movies-library-ghzs.vercel.app/updateMovie/${props.item.id}`;
+    const serverURL=`${process.env.REACT_APP_serverURL}/updateMovie/${props.item.id}`;
     const axiosRes= await axios.put(serverURL,obj);
     props.closeUpdateModal();
     props.takenNewArrFromChild(axiosRes.data);

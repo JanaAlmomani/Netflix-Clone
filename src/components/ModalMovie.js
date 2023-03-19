@@ -11,7 +11,7 @@ function ModalMovie(props) {
         setComment(event.target.value)
     }
     const postRes = async () => {
-        await fetch(`https://movies-library-ghzs.vercel.app/addMovieInfo`,
+        await fetch(`${process.env.REACT_APP_serverURL}/addMovieInfo`,
             {
                 method: 'POST',
                 body: JSON.stringify(
@@ -35,7 +35,7 @@ function ModalMovie(props) {
 
     console.log(props.show);
     return (
-       
+
         <Modal style={{ ...style2 }} show={props.show} onHide={props.close}>
             <Modal.Header style={{ backgroundColor: 'gray' }} closeButton>
                 <Modal.Title style={{ color: 'yellow' }}>{props.movieData.title}</Modal.Title>

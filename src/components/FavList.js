@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import UpdateModal from './UpdateModal';
-import DeleteModal from "./DeleteModal";
+import axios from 'axios';
 
 
 function FavList() {
@@ -22,7 +22,7 @@ function FavList() {
     }
 
     const sendReq = async () => {
-        const serverURL = `https://movies-library-ghzs.vercel.app/getMovies`;
+        const serverURL = `${process.env.REACT_APP_serverURL}/getMovies`;
         const response = await fetch(serverURL);
         const data = await response.json();
         setFavArr(data);
@@ -34,9 +34,16 @@ function FavList() {
     const takenNewArrFromChild = (arr) => {
         setFavArr(arr);
     }
-    const showDeletedModal=(arr)=>{
-        setFavArr(arr);
-        
+
+
+
+    const deletMovie = async (item) => {
+        const serverURL = `${process.env.REACT_APP_serverURL}/${item.id}`;
+        console.log(item.id);
+        const axiosRes = await axios.delete(serverURL);
+        const data = (axiosRes.data);
+        console.log(data);
+        setFavArr(data);
     }
 
     return (
@@ -53,7 +60,7 @@ function FavList() {
                                 <Card.Text>{item.release_date}</Card.Text>
                                 <Card.Text>{item.commenttext} </Card.Text>
                                 <Button variant="success" onClick={() => { showUpdateModal(item) }} >Update</Button>
-                                <Button variant="danger" onClick={showDeletedModal}>Delete</Button>
+                                <Button variant="danger" onClick={() => { deletMovie(item) }}>Delete</Button>
                             </Card.Body>
                         </Card>
                     </Col>
@@ -62,7 +69,6 @@ function FavList() {
             <UpdateModal updateFlag={updateFlag} closeUpdateModal={closeUpdateModal} item={clickMovie}
 
                 takenNewArrFromChild={takenNewArrFromChild} />
-            <DeleteModal  takenNewArrFromChild={takenNewArrFromChild} item={clickMovie}/>
         </>
     )
 }
