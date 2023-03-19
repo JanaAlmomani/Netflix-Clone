@@ -5,7 +5,7 @@ function Home(){
 
     const [trendingArr,setTrendingArr]=useState([]);
     const sendReq = async () => {
-        const serverURL = `https://movies-library-ghzs.vercel.app/trending`;
+        const serverURL = `${process.env.REACT_APP_serverURL}/trending`;
         const response = await fetch(serverURL);
         const data = await response.json();
         setTrendingArr(data);

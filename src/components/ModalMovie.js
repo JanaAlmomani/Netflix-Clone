@@ -4,13 +4,14 @@ import Modal from 'react-bootstrap/Modal';
 import Image from 'react-bootstrap/Image';
 import Form from 'react-bootstrap/Form';
 
+
 function ModalMovie(props) {
     const [comment, setComment] = useState('');
     const hadellComment = (event) => {
         setComment(event.target.value)
     }
     const postRes = async () => {
-        await fetch(`https://movies-library-ghzs.vercel.app/addMovieInfo`,
+        await fetch(`${process.env.REACT_APP_serverURL}/addMovieInfo`,
             {
                 method: 'POST',
                 body: JSON.stringify(
@@ -59,7 +60,7 @@ function ModalMovie(props) {
                     Close
                 </Button>
                 <Button variant="primary" onClick={() => {
-                    alert('Added, Thank You For The Comment')
+                    // alert('Added, Thank You For The Comment')
                     postRes()
 
                 }}>
@@ -67,9 +68,6 @@ function ModalMovie(props) {
                 </Button>
             </Modal.Footer>
         </Modal>
-
-
     )
-            
 }
 export default ModalMovie;
