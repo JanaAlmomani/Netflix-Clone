@@ -9,7 +9,7 @@ function App() {
   return (
     <>
      <Navbar />
-      <Routes>
+    <Routes>
         <Route path="/" element={<Home/>}></Route>
         <Route path="/favlist" element={<FavList/>}></Route>
       </Routes>
