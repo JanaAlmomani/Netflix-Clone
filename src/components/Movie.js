@@ -15,6 +15,7 @@ function Movie(props) {//item it self
         setModalShow(true);
         console.log(modalShow);
     }
+   
     const hadellClose = () => {
         setModalShow(false);
     }
@@ -35,9 +36,9 @@ function Movie(props) {//item it self
                     </Card.Body>
                 </Card>
             </Col>
-            <ModalMovie show={modalShow} close={hadellClose} movieData={props.item}/>
+            <ModalMovie show={modalShow} close={hadellClose} movieData={props.item} click={click}/>
         </>
-
+        
     )
 
 }
